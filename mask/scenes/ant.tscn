@@ -17,7 +17,5 @@ scale = Vector2(10, 10)
 sprite_frames = ExtResource("2_4guct")
 autoplay = "default"
 
-[node name="Area2D" type="Area2D" parent="." unique_id=415214999]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1769478541]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1769478541]
 shape = SubResource("CircleShape2D_8svqu")

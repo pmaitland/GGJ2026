@@ -1,20 +1,21 @@
 [gd_scene format=3 uid="uid://dq8kaxvg6oe0"]
 
 [ext_resource type="Script" uid="uid://c4ktuv2iigjrv" path="res://scripts/ant.gd" id="1_4guct"]
-[ext_resource type="Texture2D" uid="uid://cnfytrl0jhugb" path="res://icon.svg" id="2_acg2n"]
+[ext_resource type="SpriteFrames" uid="uid://cq7pnvkyufk5g" path="res://sprites/basic_ant.tres" id="2_4guct"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8svqu"]
-radius = 61.0
+radius = 70.256676
 
 [node name="Ant" type="RigidBody2D" unique_id=567423736]
 gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_4guct")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2087930844]
-texture = ExtResource("2_acg2n")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1203413574]
+rotation = 1.5707964
+scale = Vector2(10, 10)
+sprite_frames = ExtResource("2_4guct")
+autoplay = "default"
 
-[node name="Area2D" type="Area2D" parent="." unique_id=415214999]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1769478541]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1769478541]
 shape = SubResource("CircleShape2D_8svqu")

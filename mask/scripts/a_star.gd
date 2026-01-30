@@ -3,6 +3,7 @@ extends Node
 
 var _a_star: AStar2D
 var _goal_id: int
+const SCALE = 10
 
 
 func init(width: int, height: int, goal: Vector2) -> void:
@@ -27,18 +28,6 @@ func init(width: int, height: int, goal: Vector2) -> void:
 				if x > 0:
 					neighbour_id = _a_star.get_closest_point(Vector2(x-1, y-1))
 					_a_star.connect_points(id, neighbour_id)
-			if x < width-2:
-				neighbour_id = _a_star.get_closest_point(Vector2(x+1, y))
-				_a_star.connect_points(id, neighbour_id)
-			if y < height-2:
-				neighbour_id = _a_star.get_closest_point(Vector2(x, y+1))
-				_a_star.connect_points(id, neighbour_id)
-				if x < width-2:
-					neighbour_id = _a_star.get_closest_point(Vector2(x+1, y+1))
-					_a_star.connect_points(id, neighbour_id)
-				if x > 0:
-					neighbour_id = _a_star.get_closest_point(Vector2(x-1, y+1))
-					_a_star.connect_points(id, neighbour_id)
 			if x > 0:
 				neighbour_id = _a_star.get_closest_point(Vector2(x-1, y))
 				_a_star.connect_points(id, neighbour_id)
@@ -49,7 +38,15 @@ func set_disabled(coords: Vector2, disabled: bool) -> void:
 	_a_star.set_point_disabled(id, disabled)
 
 
-func get_next_cell_in_path(current_cell: Vector2) -> Vector2:
+func global_to_cell(pos: Vector2) -> Vector2:
+	return pos / SCALE
+
+func cell_to_global(cell: Vector2) -> Vector2:
+	return cell * SCALE
+
+
+func get_next_cell_in_path(pos: Vector2) -> Vector2:
+	var current_cell: Vector2 = global_to_cell(pos)
 	var current_cell_id: int = _a_star.get_closest_point(current_cell)
 	var path: PackedVector2Array = _a_star.get_point_path(current_cell_id, _goal_id)
-	return path[1]
+	return cell_to_global(path[1] if path.size() > 1 else path[0])

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfqpy3ox6lqr0"
-path="res://.godot/imported/cinnamon-tilemap-Sheet.png-d52a7ea93888d93b6adbf67e686023af.ctex"
+uid="uid://ccjxwijhx725y"
+path="res://.godot/imported/spray-ray.png-fd7f5399b37d017bc533600609877027.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cinnamon/cinnamon-tilemap-Sheet.png"
-dest_files=["res://.godot/imported/cinnamon-tilemap-Sheet.png-d52a7ea93888d93b6adbf67e686023af.ctex"]
+source_file="res://sprites/spray/spray-ray.png"
+dest_files=["res://.godot/imported/spray-ray.png-fd7f5399b37d017bc533600609877027.ctex"]
 
 [params]
 

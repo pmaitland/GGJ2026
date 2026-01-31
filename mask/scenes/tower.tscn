@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://okvf6s02rpua"]
 
 [ext_resource type="Script" uid="uid://b1in7qctumvij" path="res://scripts/tower.gd" id="1_2x682"]
-[ext_resource type="Texture2D" uid="uid://cnfytrl0jhugb" path="res://icon.svg" id="2_ay4al"]
 [ext_resource type="Texture2D" uid="uid://da3qrus8fu38" path="res://sprites/spray/spray-forward-Sheet.png" id="2_jfguu"]
 [ext_resource type="Texture2D" uid="uid://cw18i72lb2woh" path="res://sprites/spray/spray-left-Sheet.png" id="3_85u2j"]
 [ext_resource type="Texture2D" uid="uid://kwbeqyvbny47" path="res://sprites/spray/spray-right-Sheet.png" id="4_xl0gn"]
 [ext_resource type="Texture2D" uid="uid://dp72w778pegtg" path="res://sprites/spray/spray-backwards-Sheet.png" id="5_vqps3"]
-[ext_resource type="Texture2D" uid="uid://cb6y1f2ti3a66" path="res://sprites/basic_ant.png" id="7_xl0gn"]
+[ext_resource type="Texture2D" uid="uid://ccjxwijhx725y" path="res://sprites/spray/spray-ray.png" id="6_85u2j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfw7u"]
 atlas = ExtResource("2_jfguu")
@@ -164,31 +163,90 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_85u2j"]
-atlas = ExtResource("2_ay4al")
-region = Rect2(32, 64, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_xl0gn"]
+atlas = ExtResource("6_85u2j")
+region = Rect2(0, 0, 48, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vqps3"]
-atlas = ExtResource("7_xl0gn")
-region = Rect2(30, 0, 6, 1)
+atlas = ExtResource("6_85u2j")
+region = Rect2(48, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dk8x1"]
+atlas = ExtResource("6_85u2j")
+region = Rect2(96, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdbll"]
+atlas = ExtResource("6_85u2j")
+region = Rect2(144, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di6vr"]
+atlas = ExtResource("6_85u2j")
+region = Rect2(192, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtvrq"]
+atlas = ExtResource("6_85u2j")
+region = Rect2(240, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6gji"]
+atlas = ExtResource("6_85u2j")
+region = Rect2(288, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rc43p"]
+atlas = ExtResource("6_85u2j")
+region = Rect2(336, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dk4do"]
+atlas = ExtResource("6_85u2j")
+region = Rect2(384, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxhak"]
+atlas = ExtResource("6_85u2j")
+region = Rect2(432, 0, 48, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xl0gn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_85u2j")
+"texture": SubResource("AtlasTexture_xl0gn")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vqps3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dk8x1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdbll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_di6vr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtvrq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6gji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rc43p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dk4do")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxhak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xl0gn")
 }],
 "loop": false,
 "name": &"default",
-"speed": 1.0
+"speed": 15.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xl0gn"]
-radius = 12.999998
-height = 90.0
+radius = 9.0
+height = 58.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_85u2j"]
 
@@ -201,23 +259,22 @@ sprite_frames = SubResource("SpriteFrames_dk8x1")
 animation = &"right"
 
 [node name="Attack" type="Node2D" parent="." unique_id=1768136673]
-position = Vector2(0, -16)
+position = Vector2(0, -19.94)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Attack" unique_id=2105923792]
-self_modulate = Color(1, 1, 1, 0.27058825)
-position = Vector2(45, 0)
-scale = Vector2(2.6875, 0.8125)
+position = Vector2(31.38, 0)
+rotation = 3.1415927
 sprite_frames = SubResource("SpriteFrames_xl0gn")
 
 [node name="AttackArea" type="Area2D" parent="Attack" unique_id=1718937138]
 rotation = -1.5707964
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack/AttackArea" unique_id=1325356176]
-position = Vector2(0, 44)
+position = Vector2(0, 29)
 shape = SubResource("CapsuleShape2D_xl0gn")
 
 [node name="RangeCast" type="ShapeCast2D" parent="Attack" unique_id=1994155896]
-scale = Vector2(9, 9)
+scale = Vector2(5.64, 5.64)
 shape = SubResource("CircleShape2D_85u2j")
 target_position = Vector2(0, 0)
 

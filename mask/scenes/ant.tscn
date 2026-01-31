@@ -4,7 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://cq7pnvkyufk5g" path="res://sprites/basic_ant.tres" id="2_4guct"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8svqu"]
-radius = 70.256676
+radius = 8.062258
 
 [node name="Ant" type="RigidBody2D" unique_id=567423736]
 gravity_scale = 0.0
@@ -13,7 +13,6 @@ script = ExtResource("1_4guct")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1203413574]
 rotation = 1.5707964
-scale = Vector2(10, 10)
 sprite_frames = ExtResource("2_4guct")
 autoplay = "default"
 

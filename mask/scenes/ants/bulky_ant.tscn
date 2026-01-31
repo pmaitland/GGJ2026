@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cbs7oo0gvctkv"]
+
+[ext_resource type="PackedScene" uid="uid://dq8kaxvg6oe0" path="res://scenes/ants/ant.tscn" id="1_d57lg"]
+
+[node name="BulkyAnt" type="Node2D" unique_id=2083394880]
+
+[node name="Ant" parent="." unique_id=567423736 instance=ExtResource("1_d57lg")]
+collision_mask = 0
+health = 300
+speed = 5
+
+[node name="CollisionShape2D" parent="Ant" index="1" unique_id=1769478541]
+scale = Vector2(1.2, 1.2)
+
+[editable path="Ant"]

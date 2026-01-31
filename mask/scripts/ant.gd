@@ -3,11 +3,19 @@ class_name Ant extends RigidBody2D
 var BASE_SPEED = 10
 
 @export var health = 100
+var current_health: int
 var speed = BASE_SPEED
 var rotation_speed = 1
 @onready var animation = $AnimatedSprite2D
 
 var target: Vector2  # where ant wants to go
+
+@onready var health_bar: ProgressBar = $ProgressBar
+
+func _ready() -> void:
+	current_health = health
+	health_bar.max_value = health
+	health_bar.value = current_health
 
 
 func _physics_process(delta: float) -> void:
@@ -25,8 +33,9 @@ func _find_target() -> Vector2:
 
 
 func apply_damage(dmg: int) -> void:
-	health -= dmg
-	if health < 0:
+	current_health -= dmg
+	health_bar.value = current_health
+	if current_health < 0:
 		die()
 
 

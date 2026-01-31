@@ -2,10 +2,11 @@ extends Node2D
 
 @onready var attack_node = $Attack
 @onready var range_cast = $Attack/RangeCast
-@onready var attack_cast = $Attack/AttackCast
+@onready var attack_area = $Attack/AttackArea
 @onready var attack_animation = $Attack/AnimatedSprite2D
 @onready var bottle_animation = $AnimatedSprite2D
 @onready var attack_cooldown: Timer = $AttackCooldown
+@onready var attack_duration: Timer = $AttackDuration
 
 @export var damage: int = 25
 
@@ -14,6 +15,7 @@ var attack_ready = true
 
 func _ready() -> void:
 	attack_cooldown.timeout.connect(_on_attack_cooldown_timeout)
+	attack_duration.timeout.connect(_on_attack_duration_timeout)
 
 
 func _physics_process(_delta: float) -> void:
@@ -27,12 +29,12 @@ func _attack() -> void:
 	
 	attack_ready = false
 	attack_cooldown.start()
+	
 	_target_ant()
 	attack_animation.play()
 	
-	for i in attack_cast.get_collision_count():
-		var ant = attack_cast.get_collider(i) as Ant
-		ant.apply_damage(damage)
+	attack_area.monitoring = true
+	attack_duration.start()
 
 
 func _target_ant() -> void:
@@ -52,3 +54,11 @@ func _is_ant_in_range() -> bool:
 
 func _on_attack_cooldown_timeout() -> void:
 	attack_ready = true
+
+func _on_attack_duration_timeout() -> void:
+	attack_area.monitoring = false
+
+
+func _on_attack_area_body_entered(body: Node2D) -> void:
+	if body is Ant:
+		(body as Ant).apply_damage(damage)

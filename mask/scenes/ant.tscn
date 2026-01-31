@@ -4,7 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://cq7pnvkyufk5g" path="res://sprites/basic_ant.tres" id="2_4guct"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8svqu"]
-radius = 8.062258
+radius = 4.0
 
 [node name="Ant" type="RigidBody2D" unique_id=567423736]
 gravity_scale = 0.0

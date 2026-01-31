@@ -16,7 +16,7 @@ func _ready() -> void:
 	attack_cooldown.timeout.connect(_on_attack_cooldown_timeout)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if attack_ready:
 		_attack()
 

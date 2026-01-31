@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 AStar="*uid://xr7pm1dxmwti"
+Level="*uid://crspttxwwc0ja"
 
 [display]
 

@@ -4,7 +4,7 @@ var BASE_SPEED = 10
 
 @export var health = 100
 var current_health: int
-var speed = BASE_SPEED
+@export var speed = BASE_SPEED
 var rotation_speed = 1
 @onready var animation = $AnimatedSprite2D
 

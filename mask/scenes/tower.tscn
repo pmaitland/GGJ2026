@@ -186,7 +186,9 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jfguu"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xl0gn"]
+radius = 12.999998
+height = 90.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_85u2j"]
 
@@ -202,14 +204,17 @@ animation = &"right"
 position = Vector2(0, -16)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Attack" unique_id=2105923792]
+self_modulate = Color(1, 1, 1, 0.27058825)
 position = Vector2(45, 0)
 scale = Vector2(2.6875, 0.8125)
 sprite_frames = SubResource("SpriteFrames_xl0gn")
 
-[node name="AttackCast" type="ShapeCast2D" parent="Attack" unique_id=665831652]
-position = Vector2(10, 0)
-shape = SubResource("CapsuleShape2D_jfguu")
-target_position = Vector2(70, 0)
+[node name="AttackArea" type="Area2D" parent="Attack" unique_id=1718937138]
+rotation = -1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack/AttackArea" unique_id=1325356176]
+position = Vector2(0, 44)
+shape = SubResource("CapsuleShape2D_xl0gn")
 
 [node name="RangeCast" type="ShapeCast2D" parent="Attack" unique_id=1994155896]
 scale = Vector2(9, 9)
@@ -219,3 +224,9 @@ target_position = Vector2(0, 0)
 [node name="AttackCooldown" type="Timer" parent="." unique_id=1345570449]
 wait_time = 2.5
 one_shot = true
+
+[node name="AttackDuration" type="Timer" parent="." unique_id=1485060664]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="body_entered" from="Attack/AttackArea" to="." method="_on_attack_area_body_entered"]

@@ -35,7 +35,7 @@ func _find_target() -> Vector2:
 func apply_damage(dmg: int) -> void:
 	current_health -= dmg
 	health_bar.value = current_health
-	if current_health < 0:
+	if current_health <= 0:
 		die()
 
 

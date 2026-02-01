@@ -2,6 +2,8 @@ extends Node
 
 enum AntType { None, Basic, Fast, Bulky }
 
+var current_level = 1
+
 
 class AntGroup extends Object:
 	var type: Level.AntType
@@ -35,11 +37,52 @@ class AntHoard:
 
 
 
-var level1 = AntHoard.new([
-	AntGroup.new(Level.AntType.None, 5),
-	AntGroup.new(Level.AntType.Basic, 10),
-	AntGroup.new(Level.AntType.None, 5),
-	AntGroup.new(Level.AntType.Fast, 2),
-	AntGroup.new(Level.AntType.None, 5),
-	AntGroup.new(Level.AntType.Bulky, 2),
-])
+class LevelConfig:
+	var ants: AntHoard
+	var grid_size: Vector2i
+	var spray_bottles: Array[Vector2i]
+	var cinnamon_limit: int
+
+
+func get_level(level_number: int) -> Dictionary:
+	return levels[level_number - 1]
+
+
+func is_more_levels() -> int:
+	return current_level < levels.size()
+
+
+func next_level() -> void:
+	current_level += 1
+
+
+var levels = [
+	{ # 1
+		"ants": AntHoard.new([
+			AntGroup.new(Level.AntType.None, 1),
+			AntGroup.new(Level.AntType.Basic, 5),
+		]),
+		"grid": Vector2i(12, 6),
+		"sprays": [
+			Vector2i(6, 4),
+		],
+		"cinnamon": 10,
+		"end": Vector2i(11, 0),
+		"kiwi_health": 1,
+	},
+	{ # 2
+		"ants": AntHoard.new([
+			AntGroup.new(Level.AntType.None, 5),
+			AntGroup.new(Level.AntType.Basic, 5),
+			AntGroup.new(Level.AntType.None, 1),
+			AntGroup.new(Level.AntType.Bulky, 1),
+		]),
+		"grid": Vector2i(16, 8),
+		"sprays": [
+			Vector2i(4, 6),
+			Vector2i(12, 1),
+		],
+		"cinnamon": 5,
+		"kiwi_health": 3,
+	}
+]

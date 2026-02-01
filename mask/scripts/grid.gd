@@ -17,6 +17,7 @@ extends Node
 	Level.AntType.Fast: fast_ant_scene,
 	Level.AntType.Bulky: bulky_ant_scene,
 }
+@onready var kiwi_scene: PackedScene = load("res://scenes/kiwi.tscn")
 
 func _get_ant_scene(type: Level.AntType) -> PackedScene:
 	return mapping[type]
@@ -27,6 +28,7 @@ var current_level = Level.level1
 
 var cells: Array[Node2D] = []
 var cinnamon: TileMapLayer
+var kiwi: Node2D
 
 
 func _ready() -> void:
@@ -43,6 +45,7 @@ func _ready() -> void:
 			add_child(cell)
 	_create_spray_bottles()
 	_create_cinnamon()
+	_create_kiwi()
 
 
 func _next_ant() -> PackedScene:
@@ -153,5 +156,11 @@ func _update_cinnamon(cell: Vector2) -> void:
 		cinnamon.set_cell(cell, 1, sprite_cell)
 
 
+func _create_kiwi() -> void:
+	kiwi = kiwi_scene.instantiate()
+	kiwi.global_position = AStar.cell_to_global(end)
+	add_child(kiwi)
+
+
 func ant_got_da_kiwi() -> void:
-	print("oh no")
+	kiwi.be_eaten()

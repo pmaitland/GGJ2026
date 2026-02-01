@@ -6,6 +6,7 @@
 [node name="Main" type="Node2D" unique_id=1238660768]
 
 [node name="Grid" parent="." unique_id=486579014 instance=ExtResource("1_0wfyh")]
+end = Vector2i(9, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=916026731]
 script = ExtResource("3_sugp2")

@@ -10,6 +10,11 @@ func _ready() -> void:
 
 
 func disable() -> void:
+	if disabled():
+		return
+	if not get_parent().has_cinnamon():
+		return
+	
 	AStar.set_disabled(AStar.global_to_cell(global_position), true)
 	if disabled():
 		get_parent().place_cinnamon(global_position)

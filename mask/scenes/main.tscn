@@ -47,6 +47,7 @@ label_settings = ExtResource("3_jyhfs")
 end = Vector2i(9, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=916026731]
+y_sort_enabled = true
 script = ExtResource("3_sugp2")
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D" unique_id=2008863507]

@@ -29,10 +29,18 @@ label_settings = ExtResource("3_jyhfs")
 horizontal_alignment = 1
 
 [node name="AntCount" type="Label" parent="CanvasLayer" unique_id=1663662808]
-offset_left = 4.0
-offset_right = 532.0
-offset_bottom = 51.0
+offset_left = 8.0
+offset_top = 669.0
+offset_right = 536.0
+offset_bottom = 720.0
 text = "ants in your kiwi: 0/0"
+label_settings = ExtResource("3_jyhfs")
+
+[node name="CinnamonCount" type="Label" parent="CanvasLayer" unique_id=898208650]
+offset_left = 8.0
+offset_right = 536.0
+offset_bottom = 51.0
+text = "cinnamon in your pocket: 0/0"
 label_settings = ExtResource("3_jyhfs")
 
 [node name="Grid" parent="." unique_id=486579014 instance=ExtResource("1_0wfyh")]

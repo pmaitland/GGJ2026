@@ -213,4 +213,5 @@ func ant_got_da_kiwi() -> void:
 	successful_ant_count += 1
 	ant_got_in_da_kiwi.emit(successful_ant_count, max_successful_ant_count)
 	if successful_ant_count >= max_successful_ant_count:
+		kiwi.be_fully_eaten()
 		game_over.emit()

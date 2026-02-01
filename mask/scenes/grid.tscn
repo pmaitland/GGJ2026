@@ -4,4 +4,3 @@
 
 [node name="Grid" type="Node2D" unique_id=486579014]
 script = ExtResource("1_t5fjg")
-spray_bottles = Array[Vector2i]([Vector2i(6, 6), Vector2i(2, 9)])

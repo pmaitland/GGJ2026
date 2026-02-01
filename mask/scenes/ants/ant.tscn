@@ -18,7 +18,7 @@ script = ExtResource("1_4guct")
 y_sort_enabled = true
 rotation = 1.5707964
 sprite_frames = ExtResource("2_4guct")
-autoplay = "default"
+animation = &"bulky"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1769478541]
 y_sort_enabled = true

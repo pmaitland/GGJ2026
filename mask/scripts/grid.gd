@@ -67,7 +67,7 @@ func _next_ant() -> PackedScene:
 
 func is_ants_remaining() -> bool:
 	for child in get_children():
-		if child is Ant:
+		if child is Ant or child.get_child(0) is Ant:
 			return true
 	return false
 

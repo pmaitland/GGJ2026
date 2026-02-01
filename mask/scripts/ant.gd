@@ -19,6 +19,7 @@ var stuck_for_time: float = 0
 @export var stuck_timeout: float = 5.0
 
 func _ready() -> void:
+	animation.play()
 	current_health = health
 	health_bar.max_value = health
 	health_bar.value = current_health

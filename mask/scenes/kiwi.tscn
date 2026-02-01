@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c5vdw2f78ob3a"]
+
+[ext_resource type="Script" uid="uid://ofuebcbjpjoo" path="res://scripts/kiwi.gd" id="1_jhrno"]
+[ext_resource type="SpriteFrames" uid="uid://burl82iu1wlld" path="res://sprites/kiwi/kiwi.tres" id="1_tvqej"]
+
+[node name="Kiwi" type="Node2D" unique_id=825563482]
+script = ExtResource("1_jhrno")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=522371330]
+sprite_frames = ExtResource("1_tvqej")

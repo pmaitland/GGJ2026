@@ -12,6 +12,8 @@ var target: Vector2  # where ant wants to go
 
 @onready var health_bar: ProgressBar = $ProgressBar
 
+signal got_da_kiwi
+
 func _ready() -> void:
 	current_health = health
 	health_bar.max_value = health
@@ -19,6 +21,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if AStar.is_goal(AStar.global_to_cell(global_position)):
+		got_da_kiwi.emit()
+		die()
 	target = _find_target()
 	var target_direction = (target - position).normalized()
 	var motion = target_direction * delta * speed

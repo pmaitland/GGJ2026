@@ -34,6 +34,10 @@ class AntHoard:
 
 	func get_ant():
 		return self.groups[self.current_group].type
+	
+	func reset():
+		current_group = 0
+		count_in_group = 0
 
 
 
@@ -58,6 +62,10 @@ func is_more_levels() -> int:
 
 func next_level() -> void:
 	current_level += 1
+
+
+func reset_level() -> void:
+	get_current_level()["ants"].reset()
 
 
 var levels = [

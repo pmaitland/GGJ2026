@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://c5vdw2f78ob3a"]
+[gd_scene format=3 uid="uid://c4676o7myogd8"]
 
 [ext_resource type="Script" uid="uid://ofuebcbjpjoo" path="res://scripts/kiwi.gd" id="1_jhrno"]
-[ext_resource type="SpriteFrames" uid="uid://burl82iu1wlld" path="res://sprites/kiwi/kiwi.tres" id="1_tvqej"]
+[ext_resource type="SpriteFrames" uid="uid://dajeal8iymrbo" path="res://sprites/kiwi/kiwi.tres" id="1_tvqej"]
 
 [node name="Kiwi" type="Node2D" unique_id=825563482]
 script = ExtResource("1_jhrno")

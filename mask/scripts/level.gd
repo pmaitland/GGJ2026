@@ -72,17 +72,15 @@ var levels = [
 	{ # 1
 		"ants": AntHoard.new([
 			AntGroup.new(Level.AntType.None, 1),
-			AntGroup.new(Level.AntType.Basic, 1),
-			AntGroup.new(Level.AntType.Bulky, 1),
-			AntGroup.new(Level.AntType.Fast, 1),
+			AntGroup.new(Level.AntType.Basic, 3),
 		]),
-		"grid": Vector2i(12, 6),
+		"grid": Vector2i(11, 4),
 		"sprays": [
-			Vector2i(6, 4),
+			Vector2i(5, 3),
 		],
 		"cinnamon": 11,
-		"end": Vector2i(11, 0),
-		"kiwi_health": 1,
+		"end": Vector2i(9, 2),
+		"kiwi_health": 2,
 	},
 	{ # 2
 		"ants": AntHoard.new([

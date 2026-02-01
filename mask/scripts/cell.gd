@@ -6,7 +6,7 @@ extends Node2D
 
 
 func _ready() -> void:
-	outline.modulate.a = 0.05
+	outline.modulate.a = 0.2
 
 
 func disable() -> void:

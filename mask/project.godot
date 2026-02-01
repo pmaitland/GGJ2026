@@ -22,9 +22,8 @@ Level="*uid://crspttxwwc0ja"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=480
-window/size/mode=3
+window/size/viewport_width=1280
+window/size/viewport_height=720
 
 [physics]
 
@@ -34,3 +33,4 @@ window/size/mode=3
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
+environment/defaults/default_clear_color=Color(0.28627452, 0.63529414, 0.4117647, 1)

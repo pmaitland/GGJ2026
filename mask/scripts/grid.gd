@@ -29,6 +29,13 @@ var cinnamon: TileMapLayer
 var kiwi: Node2D
 var cinnamon_placed: int = 0
 
+var max_successful_ant_count: int
+var successful_ant_count: int = 0
+
+signal ant_got_in_da_kiwi
+signal cinnamon_used
+signal game_over
+
 
 func _ready() -> void:
 	level = Level.get_level(Level.current_level)
@@ -56,6 +63,9 @@ func _ready() -> void:
 	_create_spray_bottles()
 	_create_cinnamon()
 	_create_kiwi()
+	max_successful_ant_count = Level.get_level(Level.current_level)["kiwi_health"]
+	ant_got_in_da_kiwi.emit(successful_ant_count, max_successful_ant_count)
+	cinnamon_used.emit(Level.get_level(Level.current_level)["cinnamon"] - cinnamon_placed)
 
 
 func _next_ant() -> PackedScene:
@@ -123,6 +133,7 @@ func has_cinnamon() -> bool:
 
 func place_cinnamon(pos: Vector2) -> void:
 	cinnamon_placed += 1
+	cinnamon_used.emit(Level.get_level(Level.current_level)["cinnamon"] - cinnamon_placed)
 	var cell: Vector2 = AStar.global_to_cell(pos)
 	_update_cinnamon(cell)
 	
@@ -199,3 +210,7 @@ func _create_kiwi() -> void:
 
 func ant_got_da_kiwi() -> void:
 	kiwi.be_eaten()
+	successful_ant_count += 1
+	ant_got_in_da_kiwi.emit(successful_ant_count, max_successful_ant_count)
+	if successful_ant_count >= max_successful_ant_count:
+		game_over.emit()

@@ -72,7 +72,7 @@ var levels = [
 		"sprays": [
 			Vector2i(6, 4),
 		],
-		"cinnamon": 10,
+		"cinnamon": 11,
 		"end": Vector2i(11, 0),
 		"kiwi_health": 1,
 	},
@@ -88,7 +88,7 @@ var levels = [
 			Vector2i(4, 6),
 			Vector2i(12, 1),
 		],
-		"cinnamon": 5,
+		"cinnamon": 7,
 		"kiwi_health": 3,
 	}
 ]

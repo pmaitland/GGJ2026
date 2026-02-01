@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="Mask"
-run/main_scene="uid://b1h6x3saqvosb"
+run/main_scene="uid://bx03lf14bd1gk"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
 [autoload]

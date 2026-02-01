@@ -1,8 +1,8 @@
 [gd_resource type="TileSet" format=3 uid="uid://dobjbie1w55kp"]
 
-[ext_resource type="Texture2D" uid="uid://chq3ycr12devb" path="res://sprites/cinnamon/cinnamon-tilemap-Sheet.png" id="1_kbtng"]
+[ext_resource type="Texture2D" uid="uid://dfqpy3ox6lqr0" path="res://sprites/cinnamon/cinnamon-tilemap-Sheet.png" id="1_kbtng"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ro3w2"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kbtng"]
 texture = ExtResource("1_kbtng")
 0:0/0 = 0
 1:0/0 = 0
@@ -28,4 +28,4 @@ texture = ExtResource("1_kbtng")
 6:3/0 = 0
 
 [resource]
-sources/0 = SubResource("TileSetAtlasSource_ro3w2")
+sources/1 = SubResource("TileSetAtlasSource_kbtng")

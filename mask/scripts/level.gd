@@ -145,4 +145,70 @@ var levels = [
 		"end": Vector2i(13, 4),
 		"kiwi_health": 3,
 	},
+	{ # 6
+		"ants": AntHoard.new([
+			AntGroup.new(Level.AntType.None, 1),
+			AntGroup.new(Level.AntType.Basic, 2),
+			AntGroup.new(Level.AntType.Bulky, 1),
+		]),
+		"grid": Vector2i(11, 4),
+		"sprays": [
+			Vector2i(4, 3),
+		],
+		"cinnamon": 5,
+		"end": Vector2i(8, 2),
+		"kiwi_health": 1,
+	},
+	{ # 7
+		"ants": AntHoard.new([
+			AntGroup.new(Level.AntType.None, 3),
+			AntGroup.new(Level.AntType.Fast, 1),
+		]),
+		"grid": Vector2i(11, 4),
+		"sprays": [
+
+		],
+		"cinnamon": 10,
+		"end": Vector2i(8, 2),
+		"kiwi_health": 1,
+	},
+	{ # 8
+		"ants": AntHoard.new([
+			AntGroup.new(Level.AntType.None, 3),
+			AntGroup.new(Level.AntType.Basic, 3),
+			AntGroup.new(Level.AntType.Fast, 5),
+			AntGroup.new(Level.AntType.Basic, 3),
+			AntGroup.new(Level.AntType.Bulky, 1),
+			AntGroup.new(Level.AntType.None, 1),
+			AntGroup.new(Level.AntType.Bulky, 1),
+		]),
+		"grid": Vector2i(11, 4),
+		"sprays": [
+			Vector2i(5, 1),
+			Vector2i(7, 3),
+		],
+		"cinnamon": 5,
+		"end": Vector2i(6, 2),
+		"kiwi_health": 1,
+	},
+	{ # 9
+		"ants": AntHoard.new([
+			AntGroup.new(Level.AntType.None, 3),
+			AntGroup.new(Level.AntType.Basic, 3),
+			AntGroup.new(Level.AntType.Fast, 5),
+			AntGroup.new(Level.AntType.Basic, 3),
+			AntGroup.new(Level.AntType.Bulky, 1),
+			AntGroup.new(Level.AntType.None, 1),
+			AntGroup.new(Level.AntType.Bulky, 1),
+		]),
+		"grid": Vector2i(15, 7),
+		"sprays": [
+			Vector2i(3, 4),
+			Vector2i(8, 0),
+			Vector2i(11, 5),
+		],
+		"cinnamon": 13,
+		"end": Vector2i(13, 5),
+		"kiwi_health": 1,
+	},
 ]

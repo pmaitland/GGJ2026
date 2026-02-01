@@ -57,6 +57,8 @@ func _process(_delta) -> void:
 		if scene:
 			var ant: Node2D = scene.instantiate()
 			ant.position = start
+			@warning_ignore("standalone_ternary")
+			ant.connect("got_da_kiwi", ant_got_da_kiwi) if ant.name == "Ant" else ant.find_child("Ant").connect("got_da_kiwi", ant_got_da_kiwi)
 			add_child(ant)
 
 		ant_spawn_timer.start(ant_spawn_cooldown)
@@ -149,3 +151,7 @@ func _update_cinnamon(cell: Vector2) -> void:
 		elif w:
 			sprite_cell = Vector2(6, 3)
 		cinnamon.set_cell(cell, 1, sprite_cell)
+
+
+func ant_got_da_kiwi() -> void:
+	print("oh no")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c4ktuv2iigjrv" path="res://scripts/ant.gd" id="1_4guct"]
 [ext_resource type="SpriteFrames" uid="uid://mgqermg6jmps" path="res://sprites/basic_ant.tres" id="2_4guct"]
-[ext_resource type="Script" path="res://scripts/progress_bar.gd" id="3_acg2n"]
+[ext_resource type="Script" uid="uid://p8o7thnil8yc" path="res://scripts/progress_bar.gd" id="3_acg2n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8svqu"]
 radius = 4.0

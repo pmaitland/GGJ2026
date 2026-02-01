@@ -74,7 +74,17 @@ func is_dead():
 
 func die():
 	dead = true
-	collision.disabled = true
+	set_collision_layer_value(1, false)
+	
 	print('Dead!')
 	animation.play("death_" + animation.animation)
+	health_bar.visible = false
+
 	await get_tree().create_timer(1).timeout
+	animation.modulate = Color(1, 1, 1, 0.9)
+	await get_tree().create_timer(1).timeout
+	animation.modulate = Color(1, 1, 1, 0.8)
+	await get_tree().create_timer(1).timeout
+	animation.modulate = Color(1, 1, 1, 0.6)
+	await get_tree().create_timer(1).timeout
+	animation.modulate = Color(1, 1, 1, 0.4)

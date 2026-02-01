@@ -76,6 +76,7 @@ func _create_cinnamon() -> void:
 	cinnamon = TileMapLayer.new()
 	cinnamon.tile_set = load("res://sprites/cinnamon/cinnamon.tres")
 	cinnamon.global_position = Vector2(-8, -8)
+	cinnamon.z_index = -1
 	add_child(cinnamon)
 	for cell in cells:
 		if cell.disabled():

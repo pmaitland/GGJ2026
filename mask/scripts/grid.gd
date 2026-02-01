@@ -215,3 +215,6 @@ func ant_got_da_kiwi() -> void:
 	if successful_ant_count >= max_successful_ant_count:
 		kiwi.be_fully_eaten()
 		game_over.emit()
+		await get_tree().create_timer(5).timeout
+		Level.reset_level()
+		get_tree().reload_current_scene()

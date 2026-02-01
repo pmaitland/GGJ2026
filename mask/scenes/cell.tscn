@@ -1,16 +1,12 @@
 [gd_scene format=3 uid="uid://cphwh3f7snx88"]
 
 [ext_resource type="Script" uid="uid://bcmpv7tt40hav" path="res://scripts/cell.gd" id="1_0s7o3"]
-[ext_resource type="Texture2D" uid="uid://blql4h2vhj1dj" path="res://sprites/cell_outline.png" id="2_0s7o3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0s7o3"]
 size = Vector2(16, 16)
 
 [node name="Cell" type="Node2D" unique_id=1762616842]
 script = ExtResource("1_0s7o3")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=298351152]
-texture = ExtResource("2_0s7o3")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1306206888]
 

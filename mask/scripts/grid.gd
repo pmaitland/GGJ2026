@@ -26,6 +26,7 @@ var ant_spawn_cooldown: float = 2
 var current_level = Level.level1
 
 var cells: Array[Node2D] = []
+var cinnamon: TileMapLayer
 
 
 func _ready() -> void:
@@ -41,6 +42,7 @@ func _ready() -> void:
 			cells.append(cell)
 			add_child(cell)
 	_create_spray_bottles()
+	_create_cinnamon()
 
 
 func _next_ant() -> PackedScene:
@@ -69,3 +71,81 @@ func _create_spray_bottles() -> void:
 		for cell in cells:
 			if cell.position == spray_bottle.position:
 				cell.disable()
+
+func _create_cinnamon() -> void:
+	cinnamon = TileMapLayer.new()
+	cinnamon.tile_set = load("res://sprites/cinnamon/cinnamon.tres")
+	cinnamon.global_position = Vector2(-8, -8)
+	cinnamon.z_index = -1
+	add_child(cinnamon)
+	for cell in cells:
+		if cell.disabled():
+			cinnamon.set_cell(AStar.global_to_cell(cell.global_position), 0, Vector2(1, 1))
+
+
+func place_cinnamon(pos: Vector2) -> void:
+	var cell: Vector2 = AStar.global_to_cell(pos)
+	_update_cinnamon(cell)
+	if cell.y > 0:
+		_update_cinnamon(Vector2(cell.x, cell.y-1))
+	if cell.y < height-1:
+		_update_cinnamon(Vector2(cell.x, cell.y+1))
+	if cell.x < width-1:
+		_update_cinnamon(Vector2(cell.x+1, cell.y))
+		if cell.y < height-1:
+			_update_cinnamon(Vector2(cell.x+1, cell.y+1))
+		if cell.y > 0:
+			_update_cinnamon(Vector2(cell.x+1, cell.y-1))
+	if cell.x > 0:
+		if cell.y < height-1:
+			_update_cinnamon(Vector2(cell.x-1, cell.y+1))
+		_update_cinnamon(Vector2(cell.x-1, cell.y))
+		if cell.y > 0:
+			_update_cinnamon(Vector2(cell.x-1, cell.y-1))
+
+
+func _update_cinnamon(cell: Vector2) -> void:
+	if cinnamon != null and AStar.is_disabled(cell):
+		var n: bool = cell.y > 0 and AStar.is_disabled(Vector2(cell.x, cell.y-1))
+		var s: bool = cell.y < AStar.height - 1 and AStar.is_disabled(Vector2(cell.x, cell.y+1))
+		var e: bool = cell.x < AStar.width - 1 and AStar.is_disabled(Vector2(cell.x+1, cell.y))
+		var w: bool = cell.x > 0 and AStar.is_disabled(Vector2(cell.x-1, cell.y))
+		var sprite_cell: Vector2 = Vector2(1, 3)
+		if n:
+			if e:
+				if s:
+					if w:
+						sprite_cell = Vector2(5, 1)
+					else:
+						sprite_cell = Vector2(4, 1)
+				elif w:
+					sprite_cell = Vector2(5, 2)
+				else:
+					sprite_cell = Vector2(4, 2)
+			elif s:
+				if w:
+					sprite_cell = Vector2(6, 1)
+				else:
+					sprite_cell = Vector2(0, 1)
+			elif w:
+				sprite_cell = Vector2(2, 2)
+			else:
+				sprite_cell = Vector2(4, 3)
+		elif e:
+			if s:
+				if w:
+					sprite_cell = Vector2(5, 0)
+				else:
+					sprite_cell = Vector2(0, 0)
+			elif w:
+				sprite_cell = Vector2(1, 0)
+			else:
+				sprite_cell = Vector2(3, 3)
+		elif s:
+			if w:
+				sprite_cell = Vector2(2, 0)
+			else:
+				sprite_cell = Vector2(5, 3)
+		elif w:
+			sprite_cell = Vector2(6, 3)
+		cinnamon.set_cell(cell, 0, sprite_cell)

@@ -34,10 +34,10 @@ func init(w: int, h: int, start: Vector2, goal: Vector2) -> void:
 				_a_star.connect_points(id, neighbour_id)
 				if x < width-2:
 					neighbour_id = _a_star.get_closest_point(Vector2(x+1, y-1))
-					_a_star.connect_points(id, neighbour_id)
+					#_a_star.connect_points(id, neighbour_id)
 				if x > 0:
 					neighbour_id = _a_star.get_closest_point(Vector2(x-1, y-1))
-					_a_star.connect_points(id, neighbour_id)
+					#_a_star.connect_points(id, neighbour_id)
 			if x > 0:
 				neighbour_id = _a_star.get_closest_point(Vector2(x-1, y))
 				_a_star.connect_points(id, neighbour_id)

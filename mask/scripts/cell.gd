@@ -1,7 +1,12 @@
 extends Node2D
 
 
-@onready var outline: Sprite2D = $Sprite2D
+@onready var outline: Sprite2D = $Outline
+@onready var hover_outline: Sprite2D = $HoverOutline
+
+
+func _ready() -> void:
+	outline.modulate.a = 0.05
 
 
 func disable() -> void:
@@ -20,8 +25,8 @@ func _on_area_2d_input_event(_viewport: Node, _event: InputEvent, _shape_idx: in
 
 
 func _on_area_2d_mouse_entered() -> void:
-	outline.visible = true
+	hover_outline.visible = true
 
 
 func _on_area_2d_mouse_exited() -> void:
-	outline.visible = false
+	hover_outline.visible = false

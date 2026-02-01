@@ -5,6 +5,7 @@
 [node name="FastAnt" type="Node2D" unique_id=537276307]
 
 [node name="Ant" parent="." unique_id=567423736 instance=ExtResource("1_n8d54")]
-collision_mask = 0
 health = 50
 speed = 25
+
+[editable path="Ant"]

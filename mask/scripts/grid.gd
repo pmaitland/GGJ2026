@@ -77,7 +77,12 @@ func _next_ant() -> PackedScene:
 
 func is_ants_remaining() -> bool:
 	for child in get_children():
-		if child is Ant or child.name.to_lower().contains("ant"):
+		var ant
+		if child is Ant:
+			ant = child
+		elif child.name.to_lower().contains("ant"):
+			ant = child.get_child(0)
+		if not ant.is_dead():
 			return true
 	return false
 

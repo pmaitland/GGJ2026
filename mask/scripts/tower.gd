@@ -60,5 +60,5 @@ func _on_attack_duration_timeout() -> void:
 
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
-	if body is Ant:
+	if body is Ant and not body.is_dead():
 		(body as Ant).apply_damage(damage)

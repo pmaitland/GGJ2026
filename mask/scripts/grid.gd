@@ -83,8 +83,11 @@ func is_ants_remaining() -> bool:
 		var ant
 		if child is Ant:
 			ant = child
-		elif child.name.to_lower().contains("ant"):
+		elif child.get_child_count() > 0 and child.get_child(0) is Ant:
 			ant = child.get_child(0)
+			print("found ant")
+			print(ant)
+			print(ant.is_dead())
 		
 		if ant and not ant.is_dead():
 			return true

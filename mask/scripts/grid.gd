@@ -5,7 +5,6 @@ extends Node
 @export var height: int = 10
 @export var start: Vector2i = Vector2i(0, 0)
 @export var end: Vector2i = Vector2i(9, 9)
-@export var ant_count: int = 10
 @export var spray_bottles: Array[Vector2i]
 
 @onready var ant_scene: PackedScene  = load("res://scenes/ants/ant.tscn")
@@ -30,6 +29,12 @@ var cells: Array[Node2D] = []
 var cinnamon: TileMapLayer
 var kiwi: Node2D
 
+var max_successful_ant_count: int = 10
+var successful_ant_count: int = 0
+
+signal ant_got_in_da_kiwi
+signal game_over
+
 
 func _ready() -> void:
 	ant_spawn_timer = Timer.new()
@@ -46,6 +51,7 @@ func _ready() -> void:
 	_create_spray_bottles()
 	_create_cinnamon()
 	_create_kiwi()
+	ant_got_in_da_kiwi.emit(successful_ant_count, max_successful_ant_count)
 
 
 func _next_ant() -> PackedScene:
@@ -164,3 +170,7 @@ func _create_kiwi() -> void:
 
 func ant_got_da_kiwi() -> void:
 	kiwi.be_eaten()
+	successful_ant_count += 1
+	ant_got_in_da_kiwi.emit(successful_ant_count, max_successful_ant_count)
+	if successful_ant_count >= max_successful_ant_count:
+		game_over.emit()

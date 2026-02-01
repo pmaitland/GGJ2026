@@ -87,16 +87,16 @@ func place_cinnamon(pos: Vector2) -> void:
 	_update_cinnamon(cell)
 	if cell.y > 0:
 		_update_cinnamon(Vector2(cell.x, cell.y-1))
-	if cell.y < height-2:
+	if cell.y < height-1:
 		_update_cinnamon(Vector2(cell.x, cell.y+1))
-	if cell.x < width-2:
+	if cell.x < width-1:
 		_update_cinnamon(Vector2(cell.x+1, cell.y))
-		if cell.y < height-2:
+		if cell.y < height-1:
 			_update_cinnamon(Vector2(cell.x+1, cell.y+1))
 		if cell.y > 0:
 			_update_cinnamon(Vector2(cell.x+1, cell.y-1))
 	if cell.x > 0:
-		if cell.y < height-2:
+		if cell.y < height-1:
 			_update_cinnamon(Vector2(cell.x-1, cell.y+1))
 		_update_cinnamon(Vector2(cell.x-1, cell.y))
 		if cell.y > 0:
@@ -105,11 +105,11 @@ func place_cinnamon(pos: Vector2) -> void:
 
 func _update_cinnamon(cell: Vector2) -> void:
 	if cinnamon != null and AStar.is_disabled(cell):
-		var n: bool = AStar.is_disabled(Vector2(cell.x, cell.y-1))
-		var s: bool = AStar.is_disabled(Vector2(cell.x, cell.y+1))
-		var e: bool = AStar.is_disabled(Vector2(cell.x+1, cell.y))
-		var w: bool = AStar.is_disabled(Vector2(cell.x-1, cell.y))
-		var sprite_cell: Vector2 = Vector2(3, 1)
+		var n: bool = cell.y > 0 and AStar.is_disabled(Vector2(cell.x, cell.y-1))
+		var s: bool = cell.y < AStar.height - 1 and AStar.is_disabled(Vector2(cell.x, cell.y+1))
+		var e: bool = cell.x < AStar.width - 1 and AStar.is_disabled(Vector2(cell.x+1, cell.y))
+		var w: bool = cell.x > 0 and AStar.is_disabled(Vector2(cell.x-1, cell.y))
+		var sprite_cell: Vector2 = Vector2(1, 3)
 		if n:
 			if e:
 				if s:
@@ -129,7 +129,7 @@ func _update_cinnamon(cell: Vector2) -> void:
 			elif w:
 				sprite_cell = Vector2(2, 2)
 			else:
-				pass
+				sprite_cell = Vector2(4, 3)
 		elif e:
 			if s:
 				if w:
@@ -139,12 +139,12 @@ func _update_cinnamon(cell: Vector2) -> void:
 			elif w:
 				sprite_cell = Vector2(1, 0)
 			else:
-				pass
+				sprite_cell = Vector2(3, 3)
 		elif s:
 			if w:
 				sprite_cell = Vector2(2, 0)
 			else:
-				pass
+				sprite_cell = Vector2(5, 3)
 		elif w:
-			pass
+			sprite_cell = Vector2(6, 3)
 		cinnamon.set_cell(cell, 0, sprite_cell)

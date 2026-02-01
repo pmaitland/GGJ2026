@@ -3,7 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://4chjb2atieiw" path="res://scenes/grid.tscn" id="1_0wfyh"]
 [ext_resource type="LabelSettings" uid="uid://djwmei3hfokk6" path="res://label.tres" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://ulmohv3g86x2" path="res://scripts/camera.gd" id="3_sugp2"]
-[ext_resource type="Script" uid="uid://dpwrcglg0wh2x" path="res://scripts/canvas.gd" id="3_tbgi4"]
+[ext_resource type="Script" path="res://scripts/canvas.gd" id="3_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://8i2glqwrb5xd" path="res://sprites/background/background.png" id="3_tefeu"]
 
 [node name="Main" type="Node2D" unique_id=1238660768]
 
@@ -39,3 +40,7 @@ end = Vector2i(9, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=916026731]
 script = ExtResource("3_sugp2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D" unique_id=2008863507]
+z_index = -10
+texture = ExtResource("3_tefeu")

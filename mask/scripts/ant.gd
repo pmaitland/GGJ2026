@@ -7,6 +7,7 @@ var current_health: int
 @export var speed = BASE_SPEED
 var rotation_speed = 1
 @onready var animation = $AnimatedSprite2D
+@onready var collision = $CollisionShape2D
 
 var target: Vector2  # where ant wants to go
 
@@ -18,6 +19,8 @@ var stuck_for_time: float = 0
 @onready var stuck_pos: Vector2 = position
 @export var stuck_timeout: float = 5.0
 
+var dead = false
+
 func _ready() -> void:
 	animation.play()
 	current_health = health
@@ -26,9 +29,12 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if dead:
+		return
+	
 	if AStar.is_goal(AStar.global_to_cell(global_position)):
 		got_da_kiwi.emit()
-		die()
+		queue_free()
 	target = _find_target()
 	var target_direction = (target - position).normalized()
 	var motion = target_direction * delta * speed
@@ -58,10 +64,17 @@ func _find_target() -> Vector2:
 func apply_damage(dmg: int) -> void:
 	current_health -= dmg
 	health_bar.value = current_health
+	
 	if current_health <= 0:
 		die()
 
 
+func is_dead():
+	return dead
+
 func die():
+	dead = true
+	collision.disabled = true
 	print('Dead!')
-	queue_free()
+	animation.play("death_" + animation.animation)
+	await get_tree().create_timer(1).timeout

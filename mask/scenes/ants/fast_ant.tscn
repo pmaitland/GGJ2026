@@ -8,4 +8,7 @@
 health = 50
 speed = 25
 
+[node name="AnimatedSprite2D" parent="Ant" index="0" unique_id=1203413574]
+animation = &"fast"
+
 [editable path="Ant"]

@@ -15,6 +15,7 @@ var target: Vector2  # where ant wants to go
 signal got_da_kiwi
 
 func _ready() -> void:
+	animation.play()
 	current_health = health
 	health_bar.max_value = health
 	health_bar.value = current_health

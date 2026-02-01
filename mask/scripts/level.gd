@@ -48,6 +48,10 @@ func get_level(level_number: int) -> Dictionary:
 	return levels[level_number - 1]
 
 
+func get_current_level() -> Dictionary:
+	return get_level(current_level)
+
+
 func is_more_levels() -> int:
 	return current_level < levels.size()
 

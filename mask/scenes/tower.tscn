@@ -251,6 +251,7 @@ height = 58.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_85u2j"]
 
 [node name="Tower" type="Node2D" unique_id=1362576494]
+y_sort_enabled = true
 script = ExtResource("1_2x682")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1526817824]
@@ -262,6 +263,8 @@ animation = &"right"
 position = Vector2(0, -19.94)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Attack" unique_id=2105923792]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(31.38, 0)
 rotation = 3.1415927
 sprite_frames = SubResource("SpriteFrames_xl0gn")

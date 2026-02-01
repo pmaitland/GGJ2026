@@ -14,6 +14,10 @@ var target: Vector2  # where ant wants to go
 
 signal got_da_kiwi
 
+var stuck_for_time: float = 0
+@onready var stuck_pos: Vector2 = position
+@export var stuck_timeout: float = 5.0
+
 func _ready() -> void:
 	current_health = health
 	health_bar.max_value = health
@@ -31,6 +35,19 @@ func _physics_process(delta: float) -> void:
 	# Smoothly rotate towards the target angle
 	rotation = lerp_angle(rotation, target_angle, rotation_speed * delta)
 	move_and_collide(motion)
+	
+	track_trapped_ant(delta)
+
+
+func track_trapped_ant(delta: float) -> void:
+	if position == stuck_pos:
+		stuck_for_time += delta
+	else:
+		stuck_for_time = 0
+		stuck_pos = position
+	
+	if stuck_for_time >= stuck_timeout:
+		die()
 
 
 func _find_target() -> Vector2:

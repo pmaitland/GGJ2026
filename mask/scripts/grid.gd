@@ -148,4 +148,4 @@ func _update_cinnamon(cell: Vector2) -> void:
 				sprite_cell = Vector2(5, 3)
 		elif w:
 			sprite_cell = Vector2(6, 3)
-		cinnamon.set_cell(cell, 0, sprite_cell)
+		cinnamon.set_cell(cell, 1, sprite_cell)

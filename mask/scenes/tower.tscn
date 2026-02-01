@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cw18i72lb2woh" path="res://sprites/spray/spray-left-Sheet.png" id="3_85u2j"]
 [ext_resource type="Texture2D" uid="uid://kwbeqyvbny47" path="res://sprites/spray/spray-right-Sheet.png" id="4_xl0gn"]
 [ext_resource type="Texture2D" uid="uid://dp72w778pegtg" path="res://sprites/spray/spray-backwards-Sheet.png" id="5_vqps3"]
-[ext_resource type="Texture2D" uid="uid://ccjxwijhx725y" path="res://sprites/spray/spray-ray.png" id="6_85u2j"]
+[ext_resource type="Texture2D" uid="uid://bvaixnpbhvpal" path="res://sprites/spray/spray-ray.png" id="6_85u2j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfw7u"]
 atlas = ExtResource("2_jfguu")

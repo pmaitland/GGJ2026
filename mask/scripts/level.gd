@@ -7,9 +7,9 @@ class AntGroup extends Object:
 	var type: Level.AntType
 	var count: int
 	
-	func _init(type: Level.AntType, count: int):
-		self.type = type
-		self.count = count
+	func _init(t: Level.AntType, c: int):
+		self.type = t
+		self.count = c
 
 
 class AntHoard:
@@ -17,8 +17,8 @@ class AntHoard:
 	var current_group: int = 0
 	var count_in_group: int = 0
 
-	func _init(groups: Array[AntGroup]):
-		self.groups = groups
+	func _init(g: Array[AntGroup]):
+		self.groups = g
 
 	func should_continue():
 		return (current_group < groups.size())

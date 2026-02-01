@@ -1,12 +1,9 @@
 extends Node
 
 
-@export var width: int = 10
-@export var height: int = 10
 @export var start: Vector2i = Vector2i(0, 0)
-@export var end: Vector2i = Vector2i(9, 9)
-@export var ant_count: int = 10
-@export var spray_bottles: Array[Vector2i]
+@export var end: Vector2i
+var level
 
 @onready var ant_scene: PackedScene  = load("res://scenes/ants/ant.tscn")
 @onready var fast_ant_scene: PackedScene = load("res://scenes/ants/fast_ant.tscn")
@@ -24,14 +21,27 @@ func _get_ant_scene(type: Level.AntType) -> PackedScene:
 
 var ant_spawn_timer: Timer
 var ant_spawn_cooldown: float = 2
-var current_level = Level.level1
 
+var height: int = 10
+var width: int = 10
 var cells: Array[Node2D] = []
 var cinnamon: TileMapLayer
 var kiwi: Node2D
+var cinnamon_placed: int = 0
 
 
 func _ready() -> void:
+	level = Level.get_level(Level.current_level)
+	print(level)
+	height = level["grid"].y
+	width = level["grid"].x
+	if "start" in level:
+		start = level["start"]
+	if "end" in level:
+		end = level["end"]
+	else:
+		end = Vector2i(width - 1, height - 1)
+	
 	ant_spawn_timer = Timer.new()
 	ant_spawn_timer.one_shot = true
 	add_child(ant_spawn_timer)
@@ -49,27 +59,46 @@ func _ready() -> void:
 
 
 func _next_ant() -> PackedScene:
-	var scene = _get_ant_scene(current_level.get_ant())
-	current_level.next()
+	var ant_hoard = level["ants"]
+	var scene = _get_ant_scene(ant_hoard.get_ant())
+	ant_hoard.next()
 	return scene
 
 
+func is_ants_remaining() -> bool:
+	for child in get_children():
+		if child is Ant:
+			return true
+	return false
+
+
 func _process(_delta) -> void:
-	if ant_spawn_timer.is_stopped() and current_level.should_continue():
-		var scene = _next_ant()
-		if scene:
-			var ant: Node2D = scene.instantiate()
-			ant.position = start
-			@warning_ignore("standalone_ternary")
-			ant.connect("got_da_kiwi", ant_got_da_kiwi) if ant.name == "Ant" else ant.find_child("Ant").connect("got_da_kiwi", ant_got_da_kiwi)
-			add_child(ant)
+	if ant_spawn_timer.is_stopped():
+		if level["ants"].should_continue():
+			var scene = _next_ant()
+			if scene:
+				var ant: Node2D = scene.instantiate()
+				ant.position = start
+				@warning_ignore("standalone_ternary")
+				ant.connect("got_da_kiwi", ant_got_da_kiwi) if ant.name == "Ant" else ant.find_child("Ant").connect("got_da_kiwi", ant_got_da_kiwi)
+				add_child(ant)
+		
+		elif not is_ants_remaining():
+			complete_level()
 
 		ant_spawn_timer.start(ant_spawn_cooldown)
+		
+
+func complete_level():
+	print('Level completed!')
+	if Level.is_more_levels():
+		Level.next_level()
+		get_tree().reload_current_scene()
 
 
 func _create_spray_bottles() -> void:
 	var spray_bottle_scene: PackedScene = load("res://scenes/tower.tscn")
-	for coords in spray_bottles:
+	for coords in level["sprays"]:
 		var spray_bottle: Node2D = spray_bottle_scene.instantiate()
 		spray_bottle.position = AStar.cell_to_global(coords)
 		add_child(spray_bottle)
@@ -88,9 +117,15 @@ func _create_cinnamon() -> void:
 			cinnamon.set_cell(AStar.global_to_cell(cell.global_position), 0, Vector2(1, 1))
 
 
+func has_cinnamon() -> bool:
+	return cinnamon_placed < level["cinnamon"]
+
+
 func place_cinnamon(pos: Vector2) -> void:
+	cinnamon_placed += 1
 	var cell: Vector2 = AStar.global_to_cell(pos)
 	_update_cinnamon(cell)
+	
 	if cell.y > 0:
 		_update_cinnamon(Vector2(cell.x, cell.y-1))
 	if cell.y < height-1:

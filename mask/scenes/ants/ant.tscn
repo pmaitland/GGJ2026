@@ -2,26 +2,30 @@
 
 [ext_resource type="Script" uid="uid://c4ktuv2iigjrv" path="res://scripts/ant.gd" id="1_4guct"]
 [ext_resource type="SpriteFrames" uid="uid://mgqermg6jmps" path="res://sprites/basic_ant.tres" id="2_4guct"]
-[ext_resource type="Script" uid="uid://p8o7thnil8yc" path="res://scripts/progress_bar.gd" id="3_acg2n"]
+[ext_resource type="Script" path="res://scripts/progress_bar.gd" id="3_acg2n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8svqu"]
 radius = 4.0
 
 [node name="Ant" type="RigidBody2D" unique_id=567423736]
+y_sort_enabled = true
 collision_mask = 0
 gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_4guct")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1203413574]
+y_sort_enabled = true
 rotation = 1.5707964
 sprite_frames = ExtResource("2_4guct")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1769478541]
+y_sort_enabled = true
 shape = SubResource("CircleShape2D_8svqu")
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=775899332]
+z_as_relative = false
 offset_left = -6.0
 offset_top = -11.0
 offset_right = 6.0

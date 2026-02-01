@@ -77,6 +77,9 @@ func get_next_cell_in_path(pos: Vector2) -> Vector2:
 	var current_cell: Vector2 = global_to_cell(pos)
 	var current_cell_id: int = _a_star.get_closest_point(current_cell)
 	var path: PackedVector2Array = _a_star.get_point_path(current_cell_id, _goal_id)
+	if path.size() == 0:
+		return pos
+		
 	return cell_to_global(path[1] if path.size() > 1 else path[0])
 
 
